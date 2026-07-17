@@ -12,7 +12,8 @@ export CALIBRE=/Applications/calibre.app/Contents/MacOS/
 # export WNHOME=/usr/local/WordNet-2.1
 export CLICOLOR=1;
 export EDITOR="/opt/homebrew/bin/nvim"
-export GOG_ACCOUNT=REDACTED_EMAIL
+# GOG_ACCOUNT is exported from ~/.api_keys (sourced above) to keep the
+# email address out of this public dotfile
 export VISUAL="/opt/homebrew/bin/nvim"
 export SHELL="/opt/homebrew/bin/bash"
 export TERM=xterm-256color
@@ -80,7 +81,7 @@ export CXX=/opt/homebrew/opt/llvm/bin/clang++
 # eval "$(pyenv init -)"
 
 alias ag='gcalcli agenda'
-alias ca='gcalcli --calendar REDACTED_EMAIL calm'
+alias ca='gcalcli --calendar "$GOG_ACCOUNT" calm'
 alias cat=bat
 # climate report for rochester
 alias cliroc='lynx -dump -nolist "http://forecast.weather.gov/product.php?site=buf&product=CLI&issuedby=ROC&format=ci&version=1" | cat'
@@ -131,7 +132,7 @@ alias unquarantine='/usr/bin/xattr -d -r com.apple.quarantine'
 alias useoed="dictd --config $HOME/.dict/dictd.conf -d nodetach"
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 #alias vm='vifm'
-alias we='w3m "http://forecast.weather.gov/MapClick.php?lat=REDACTED_LAT&lon=REDACTED_LON&unit=0&lg=english&FcstType=text&TextType=1"'
+alias we='w3m "http://forecast.weather.gov/MapClick.php?lat=$WX_LAT&lon=$WX_LON&unit=0&lg=english&FcstType=text&TextType=1"'
 alias wea='curl wttr.in/austin'
 alias cdwebsite='cd ~/other/mickmcquaid.com/jekyll/mickmcq.github.io'
 # say
