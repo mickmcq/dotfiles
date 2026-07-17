@@ -1,1 +1,6 @@
 README.md
+
+# kitty: runtime state and cruft, not real config
+.config/kitty/.opacity_state
+.config/kitty/bla.lua
+.config/kitty/kitty.conf.bak
