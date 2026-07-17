@@ -11,6 +11,7 @@ Source repo: `github.com/mickmcq/dotfiles` → applied to `$HOME`.
 | `dot_bash_profile` | `~/.bash_profile` | sources `~/.api_keys` |
 | `encrypted_private_dot_api_keys.age` | `~/.api_keys` | age-encrypted secrets |
 | `dot_config/nvim-private/encrypted_private_personal.lua.age` | `~/.config/nvim-private/personal.lua` | age-encrypted, machine-local nvim settings |
+| `dot_config/private_kitty/` | `~/.config/kitty/` | kitty terminal config, dir mode 700; runtime state/backups excluded via `.chezmoiignore` |
 | `.chezmoiexternal.toml` | — | recipe: clone `mickmcq/kickstart.nvim` into `~/.config/nvim` |
 
 Neovim config is **not stored here**; it's pulled in as an *external* (its own
