@@ -13,7 +13,13 @@ Source repo: `github.com/mickmcq/dotfiles` → applied to `$HOME`.
 | `dot_config/nvim-private/encrypted_private_personal.lua.age` | `~/.config/nvim-private/personal.lua` | age-encrypted, machine-local nvim settings |
 | `dot_config/private_kitty/` | `~/.config/kitty/` | kitty terminal config, dir mode 700; runtime state/backups excluded via `.chezmoiignore` |
 | `dot_homebrew/Brewfile` | `~/.homebrew/Brewfile` | Homebrew manifest (taps/brews/casks); install with `brew bundle --global` |
+| `private_dot_gitconfig` | `~/.gitconfig` | git config (user, filters, gh credential helper) |
+| `dot_config/git/ignore` | `~/.config/git/ignore` | global git ignore (`.claude/settings.local.json`) |
+| `private_dot_gitignore_global` | `~/.gitignore_global` | legacy global ignore (`.DS_Store`, `*~`) referenced by `core.excludesfile` |
 | `.chezmoiexternal.toml` | — | recipe: clone `mickmcq/kickstart.nvim` into `~/.config/nvim` |
+
+> **Not managed:** `~/.git-credentials` holds plaintext tokens (`credential.helper = store`)
+> and is excluded via `.chezmoiignore` — never commit it.
 
 Neovim config is **not stored here**; it's pulled in as an *external* (its own
 repo, `mickmcq/kickstart.nvim`). See that repo's README for its editing workflow.

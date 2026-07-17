@@ -4,3 +4,6 @@ README.md
 .config/kitty/.opacity_state
 .config/kitty/bla.lua
 .config/kitty/kitty.conf.bak
+
+# git: plaintext credentials (credential.helper=store) — never commit
+.git-credentials
