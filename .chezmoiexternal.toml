@@ -1,0 +1,10 @@
+# Neovim config is maintained as its own repo (a kickstart.nvim fork).
+# chezmoi clones it into ~/.config/nvim on `chezmoi init`/`apply` so a new
+# machine bootstraps everything with one command, while nvim keeps its own
+# git history and upstream link. refreshPeriod limits how often chezmoi pulls.
+[".config/nvim"]
+    type = "git-repo"
+    url = "https://github.com/mickmcq/kickstart.nvim.git"
+    refreshPeriod = "168h"
+    [".config/nvim".pull]
+        args = ["--ff-only"]
