@@ -12,6 +12,7 @@ Source repo: `github.com/mickmcq/dotfiles` → applied to `$HOME`.
 | `encrypted_private_dot_api_keys.age` | `~/.api_keys` | age-encrypted secrets |
 | `dot_config/nvim-private/encrypted_private_personal.lua.age` | `~/.config/nvim-private/personal.lua` | age-encrypted, machine-local nvim settings |
 | `dot_config/private_kitty/` | `~/.config/kitty/` | kitty terminal config, dir mode 700; runtime state/backups excluded via `.chezmoiignore` |
+| `dot_homebrew/Brewfile` | `~/.homebrew/Brewfile` | Homebrew manifest (taps/brews/casks); install with `brew bundle --global` |
 | `.chezmoiexternal.toml` | — | recipe: clone `mickmcq/kickstart.nvim` into `~/.config/nvim` |
 
 Neovim config is **not stored here**; it's pulled in as an *external* (its own
@@ -59,9 +60,17 @@ chezmoi init --apply mickmcq
 
 This clones this repo, applies the bash files, **decrypts** `.api_keys` and
 `personal.lua` using `key.txt`, and **clones** the nvim external into
-`~/.config/nvim`.
+`~/.config/nvim`. It also lays down `~/.homebrew/Brewfile`.
 
-### 3. Verify
+### 3. Install all packages
+
+`chezmoi apply` (step 2) put the Brewfile in place; now install everything from it:
+
+```bash
+brew bundle --global          # installs all taps, brews, casks (incl. powerline-go)
+```
+
+### 4. Verify
 
 ```bash
 chezmoi verify && echo "state matches"

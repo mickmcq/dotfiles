@@ -1,0 +1,276 @@
+tap "xwmx/taps"
+tap "youssofal/mtplx"
+# Converts abc music notation files to MIDI files
+brew "abcmidi"
+# Simple, modern, secure file encryption
+brew "age"
+# Modern R console with syntax highlighting and fuzzy search
+brew "arf"
+# Source code beautifier for C, C++, C#, and Java
+brew "astyle"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# Compiler for writing next generation JavaScript
+brew "babel"
+# Bourne-Again SHell, a UNIX command interpreter
+brew "bash"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Manipulates BibTeX databases
+brew "bib-tool"
+# Linux/OSX/FreeBSD resource monitor
+brew "bpytop"
+# Powerful command-line bookmark manager
+brew "buku"
+# Software library to render fonts
+brew "freetype"
+# Vector graphics library with cross-device output support
+brew "cairo"
+# C unit testing framework
+brew "check"
+# Manage your dotfiles across multiple diverse machines, securely
+brew "chezmoi"
+# Cross-platform make
+brew "cmake"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
+# Music player with an ncurses based interface
+brew "cmus"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
+# Get, unpack, build, and install modules from CPAN
+brew "cpanminus"
+# Suite of command-line tools for converting to and working with CSV
+brew "csvkit"
+# Modern diagram scripting language that turns text to diagrams
+brew "d2"
+# Library and utilities for processing GIFs
+brew "giflib"
+# Secure runtime for JavaScript and TypeScript
+brew "deno"
+# Dictionary Server Protocol (RFC2229) client
+brew "dict"
+# Create ASCII graphical histograms in the terminal
+brew "distribution"
+# Terminal document viewer for .docx files
+brew "doxx"
+# Select default apps for documents and URL schemes on macOS
+brew "duti"
+# Perl lib for reading and writing EXIF metadata
+brew "exiftool"
+# Utility to determine file types
+brew "file-formula"
+# Collection of GNU find, xargs, and locate
+brew "findutils"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GNU awk utility
+brew "gawk"
+# Easily access your Google Calendar(s) from a command-line
+brew "gcalcli"
+# GNU compiler collection
+brew "gcc"
+# LLVM's OpenMP runtime library
+brew "libomp"
+# GitHub command-line tool
+brew "gh"
+# Interpreter for PostScript and PDF
+brew "ghostscript"
+# Quickly rewrite git repository history
+brew "git-filter-repo"
+# Render markdown on the CLI
+brew "glow"
+# GNU version of the tar archiving utility
+brew "gnu-tar"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
+# GNU grep, egrep and fgrep
+brew "grep"
+# Library to render SVG files using Cairo
+brew "librsvg"
+# Access DVDs as block devices without the decryption
+brew "libdvdcss"
+# Open-source video transcoder available for Linux, Mac, and Windows
+brew "handbrake"
+# Friendly PIL fork (Python Imaging Library)
+brew "pillow"
+# Self-improving AI agent that creates skills from experience
+brew "hermes-agent"
+# Client library for huggingface.co hub
+brew "hf"
+# Tools and libraries to manipulate images in select formats
+brew "imagemagick"
+# Image manipulation library
+brew "jpeg"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Input filter for the pager less
+brew "lesspipe"
+# Sophisticated file transfer program
+brew "lftp"
+# Conversion library
+brew "libiconv"
+# GNOME XML library
+brew "libxml2"
+# Music engraving system
+brew "lilypond"
+# LLM inference in C/C++
+brew "llama.cpp"
+# Next-gen compiler infrastructure
+brew "llvm"
+# Text-based web browser
+brew "lynx"
+# Powerful, clean, object-oriented scripting language
+brew "ruby", link: false
+# GUI for vim, made for macOS
+brew "macvim"
+# Utility for directing compilation
+brew "make"
+# UNIX movie player
+brew "mplayer"
+# Feature-rich command-line audio/video downloader
+brew "yt-dlp"
+# Media player based on MPlayer and mplayer2
+brew "mpv"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Read, edit, and automate Office documents (.docx, .xlsx, .pptx)
+brew "officecli"
+# Create, run, and share large language models (LLMs)
+brew "ollama"
+# OpenBSD freely-licensed SSH connectivity tools
+brew "openssh"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
+# PDF files password cracker
+brew "pdfcrack"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
+# Beautiful and useful low-latency prompt for your shell
+brew "powerline-go"
+# Protocol buffers (Google's data interchange format)
+brew "protobuf"
+# Simple and powerful dual-screen PDF reader designed for presentations
+brew "pympress"
+# Tools for and transforming and inspecting PDF files
+brew "qpdf"
+# QR Code generation
+brew "qrencode"
+# R Installation Manager
+brew "r-rig"
+# Ruby version manager
+brew "rbenv"
+# Convert character set (charsets)
+brew "recode"
+# Tools to work with human-editable, plain text data files
+brew "recutils"
+# Perl-powered file rename script with many helpful built-ins
+brew "rename"
+# SVG rendering tool and library
+brew "resvg"
+# Command-line toolbox for fancy output in the terminal
+brew "rich-cli"
+# Readline wrapper: adds readline support to tools that lack it
+brew "rlwrap"
+# Utility that provides fast incremental file transfer
+brew "rsync"
+# Safe, concurrent, practical language
+brew "rust"
+# Spreadsheet program for the terminal, using ncurses
+brew "sc-im"
+# 7-Zip is a file archiver with a high compression ratio
+brew "sevenzip"
+# CLI for Todoist
+brew "todoist-cli-go"
+# Simple terminal image viewer using the Kitty graphics protocol
+brew "tpix"
+# CLI tool that moves files or folder to the trash
+brew "trash", link: true
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Parser generator tool
+brew "tree-sitter-cli"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+# Terminal spreadsheet multitool for discovering and arranging data
+brew "visidata"
+# Pager/text based browser
+brew "w3m"
+# Internet file retriever
+brew "wget"
+# Port of OpenAI's Whisper model in C/C++
+brew "whisper-cpp"
+# Generate your Xcode project from a spec file and your folder structure
+brew "xcodegen"
+# Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
+brew "xwmx/taps/pb", trusted: true
+# Native MTP speculative decoding for Qwen3-Next on Apple Silicon
+brew "youssofal/mtplx/mtplx", trusted: true
+# Browse, search and analyse your past AI coding sessions
+cask "agentsview"
+# Multi-track audio editor and recorder
+cask "audacity"
+# Replacement for the built-in Cmd+Tab app switcher
+cask "bettercmdtab"
+# Utility to create and modify archives
+cask "betterzip"
+# E-books management software
+cask "calibre"
+# Terminal-based AI coding assistant
+cask "claude-code"
+# Ghostty-based terminal with vertical tabs and notifications for AI coding agents
+cask "cmux"
+# Two-panel file manager
+cask "commander-one"
+cask "font-fira-code-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-noto-sans-symbols-2"
+cask "font-tex-gyre-schola"
+cask "font-tex-gyre-schola-math"
+cask "font-victor-mono-nerd-font"
+# Desktop automation application
+cask "hammerspoon"
+# Vector graphics editor
+cask "inkscape"
+# Remote desktop app
+cask "jump-desktop-connect"
+# Open-source keystroke visualiser
+cask "keycastr"
+# GPU-based terminal emulator
+cask "kitty"
+# Free cross-platform office suite, fresh version
+cask "libreoffice"
+# Clipboard manager
+cask "maccy"
+# Unofficial Pushbullet desktop app to get push notifications
+cask "pb"
+# Quick Look generator for Markdown files
+cask "qlmarkdown"
+# Scientific and technical publishing system built on Pandoc
+cask "quarto"
+# Productivity application
+cask "quicksilver"
+# System monitor for the menu bar
+cask "stats"
+# Quicklook extension for source files
+cask "syntax-highlight"
+# WYSIWYG editor for TikZ diagrams in LaTeX
+cask "tikz-editor"
+# GUI for the Neovim text editor
+cask "vimr"
+# Open-source version of the X.Org X Window System
+cask "xquartz"
+# Collect, organise, cite, and share research sources
+cask "zotero"
+uv "ggsql-jupyter"
+uv "jupyter-core"
+uv "llm"
+uv "mathicsscript", with: ["cython", "matplotlib"]
+uv "pandoc-include"
+npm "decktape"
+npm "percollate"
