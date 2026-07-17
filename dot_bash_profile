@@ -1,0 +1,593 @@
+source ~/.profile
+. ~/.bashrc
+source ~/.api_keys
+export ANTHROPIC_SKILLS_PATH="$HOME/.claude/skills"
+export BUN_INSTALL="$HOME/.bun"
+export ENV=$HOME/.bashrc
+# export JAVA_HOME=`/usr/libexec/java_home 13.0.1`
+export CALIBRE=/Applications/calibre.app/Contents/MacOS/
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-12.0.2.jdk/Contents/Home
+# export JUNIT_HOME=/usr/local/junit
+# export MTURK_CMD_HOME=/Users/mcq/aws-mturk-clt-1.3.0
+# export WNHOME=/usr/local/WordNet-2.1
+export CLICOLOR=1;
+export EDITOR="/opt/homebrew/bin/nvim"
+export GOG_ACCOUNT=REDACTED_EMAIL
+export VISUAL="/opt/homebrew/bin/nvim"
+export SHELL="/opt/homebrew/bin/bash"
+export TERM=xterm-256color
+# export PAGER="vim -c 'set nomod nolist syntax=sql' -" # used by psql
+export PAGER='less -R'
+export QUARTO_PYTHON="$HOME/.local/bin/python3"
+export R_HISTFILE=~/.Rhistory
+# do not write lines beginning with space or tab (a tab
+# would have to be entered as ctrl-v followed by
+# pressing the tab key because I have bash set to use
+# tab as command completion) to history; do not write a
+# duplicate of the previous line to history:
+export HISTIGNORE="&:[ 	]*"
+export HISTFILESIZE=10000
+export HISTSIZE=10000
+export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=1
+
+export LIBRARY_PATH=$LIBRARY_PATH:/opt/homebrew/opt/openssl/lib/
+
+export PATH="/usr/local/bin:$PATH"
+#export PATH="/usr/local/apache-maven-3.3.9/bin:$PATH"
+export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/usr/local/texlive/2026/bin/universal-darwin:$PATH"
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/libomp/bin:$PATH"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
+#export PATH="/opt/homebrew/opt/python@3.12/libexec/bin:$PATH"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="/opt/homebrew/lib/ruby/gems/4.0.0/bin:$PATH"
+export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
+export PATH="/opt/homebrew/opt/file-formula/bin:$PATH"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+export MANPATH="/opt/homebrew/share/man:$MANPATH"
+export MANPATH="/opt/homebrew/opt/findutils/libexec/gnuman:$MANPATH"
+export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
+export MANPATH="/opt/homebrew/opt/sqlite3/share/man:$MANPATH"
+export MANPATH="/opt/homebrew/opt/grep/libexec/share/man:$MANPATH"
+export MANPATH="/usr/local/texlive/2026/texmf-dist/doc/man:$MANPATH"
+export INFOPATH="/usr/local/texlive/2026/texmf-dist/doc/info"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib $LDFLAGS"
+export LDFLAGS="-L/opt/homebrew/opt/libomp/lib $LDFLAGS"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include $CPPFLAGS"
+export CPPFLAGS="-I/opt/homebrew/opt/libomp/include $CPPFLAGS"
+export LDFLAGS="-L/opt/homebrew/opt/ruby/lib $LDFLAGS"
+export CPPFLAGS="-I/opt/homebrew/opt/ruby/include $CPPFLAGS"
+export LDFLAGS="-L/opt/homebrew/opt/sqlite/lib $LDFLAGS"
+export CPPFLAGS="-I/opt/homebrew/opt/sqlite/include $CPPFLAGS"
+# export LDFLAGS="-L/opt/homebrew/opt/jpeg/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/jpeg/include"
+# export LDFLAGS="-L/opt/homebrew/opt/freetype/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/freetype/include/freetype2"
+export CC=/opt/homebrew/opt/llvm/bin/clang
+export CXX=/opt/homebrew/opt/llvm/bin/clang++
+
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init -)"
+
+alias ag='gcalcli agenda'
+alias ca='gcalcli --calendar REDACTED_EMAIL calm'
+alias cat=bat
+# climate report for rochester
+alias cliroc='lynx -dump -nolist "http://forecast.weather.gov/product.php?site=buf&product=CLI&issuedby=ROC&format=ci&version=1" | cat'
+# climate report for austin / san antonio
+alias climate='lynx -dump -nolist "https://forecast.weather.gov/product.php?site=NWS&product=CLI&issuedby=ATT" | cat'
+alias cl=colorls
+# alias cputemp='sudo powermetrics --samplers smc | grep -i "CPU die temperature"'
+# Launch kitty with the custom session file
+alias defaultkitty='/Applications/kitty.app/Contents/MacOS/kitty --session ~/.config/kitty/my_session.conf &'
+
+# following sorts everything in the current dir by size
+alias duh='du -hd 0 * .[a-zA-Z]* 2>/dev/null | gsort -h'
+# alias goog='googler --count 4 -x --colors bjdxxy '
+alias grep='grep -E'
+alias less='less -r'
+alias listebooks="find ~/ -name "*.tags" -print0 2>/dev/null | xargs -0 grep ebook | perl -pe 's/^\/Users.*\/(\w[A-Za-z-]+\d\d\d\d\w?).tags:ebook/\$1/' | sort -k 2"
+# must first run llama-server in a separate window for llmc to work,
+# e.g., llama-server -m   /Users/mm223266/local-llm-models/Qwen3.6-35B-A3B-Q8_0.gguf --port 8080 -c 4096
+alias llmc='llm chat -m llama-server'
+alias llms='llama-server -m   $HOME/local-llm-models/Qwen3.6-35B-A3B-Q8_0.gguf --port 8080 -c 4096'
+alias lls='llama-server --fim-qwen-7b-default'
+alias ls='/opt/homebrew/bin/gls --color=always --hyperlink=auto'
+#alias news='lynx -dump -nolist "http://news.google.com/news?pz=1&ned=us&hl=en&hdlOnly=1 " | recode latin1..u8 | less'
+# mathicsscript: disable the Asymptote co-process (TeXLive asy leaks an orphan
+# per launch that holds output open / hangs piping). matplotlib handles 2D plots.
+export ASY_PROG=/usr/bin/false
+alias ma='mathicsscript -e vi'
+alias mv='mv -i'
+alias news='w3m "http://news.google.com/news?pz=1&ned=us&hl=en&hdlOnly=1 " | cat'
+alias nv=nvim
+# alias pip-upgrade="pip list -o | cut -f1 -d' ' | tr ' ' '\n' | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip install -U"
+# alias qb='open -a qutebrowser'
+alias qr='quarto render '
+alias r='arf'
+# make ranger exit to the most recent dir
+# alias ra='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias ringbell="echo -n ^G"
+alias tar='/opt/homebrew/bin/gtar'
+alias td='todoist'
+alias thes='dict -d moby-thesaurus'
+# following allows a newly downloaded file to be opened
+# by saying open -a filename without being hung up by
+# the Apple dialog warning about the dangers of opening
+# downloaded files, the problem being that the warning
+# does not open if the process that triggered it came
+# from a non-graphical application
+alias unquarantine='/usr/bin/xattr -d -r com.apple.quarantine'
+alias useoed="dictd --config $HOME/.dict/dictd.conf -d nodetach"
+alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
+#alias vm='vifm'
+alias we='w3m "http://forecast.weather.gov/MapClick.php?lat=REDACTED_LAT&lon=REDACTED_LON&unit=0&lg=english&FcstType=text&TextType=1"'
+alias wea='curl wttr.in/austin'
+alias cdwebsite='cd ~/other/mickmcquaid.com/jekyll/mickmcq.github.io'
+# say
+#   currip
+# to get the current IP address
+currip() {
+  osascript -e "IPv4 address of (system info)"
+}
+# another way would be to say
+#  ifconfig | awk '/inet /&&!/127.0.0.1/{print $2;exit}'
+#
+# say
+#    lstimes
+# to see a list of files with dates and timestamps
+# say
+#    lstimes | sort -n
+# to sort in time order
+#
+# reason for long awk script is that some filenames have
+# spaces, so $5 is only the first part of the filename,
+# so we have to iterate from $6 to NF, the total number
+# of fields, to get that.
+lstimes () {
+  #/usr/local/bin/ls  -g -G --time-style=+%F-%T \
+  /opt/homebrew/bin/gls  -g -G --time-style=+%F-%T \
+  | awk '{ printf  "%s\t%s",$4,$5; for (i=6;i<=NF;i++) printf " %s",$i; printf "\n" }' ;
+}
+# say, e.g., flstimes "*.pdf" to see pdf files with timestamps
+#         or flstimes "*.pdf" | sort -n to see them time-sorted
+flstimes () {
+  find . -name "$1" -print0 2>/dev/null \
+  | xargs -0 /opt/homebrew/bin/gls  -g -G --time-style=+%F-%T \
+  | awk '{ printf  "%s\t%s",$4,$5; for (i=6;i<=NF;i++) printf " %s",$i; printf "\n" }' ;
+} 
+# say, e.g., filesizes "*.txt" to see txt files with sizes
+filesizes () {
+  find . -name "$1" -print0 2>/dev/null \
+  | xargs -0 /usr/bin/stat -f "%5z%t%Sa%t%N" -t "%Y%m%d%H%M%S";
+} 
+# say, e.g., filetimes "*.txt" to see txt files with times
+filetimes () {
+  find . -type f -name "$1" -print0 2>/dev/null \
+  | xargs -0 /usr/bin/stat -f "%Sm%t%9z%t%N" -t "%Y%m%d%H%M%S" \
+  | perl -pe 's/\t\.\//\t/';
+}
+# say, e.g., filepatterns "*.tex" "biblatex" to see
+# lines in .tex files including the string biblatex
+filepatterns () {
+  find . -name "$1" -print0 2>/dev/null \
+  | xargs -0 grep $2;
+}
+# say, e.g., fn fourobjects-4.mov to find that filename
+# without seeing any permission denied messages
+fn () {
+  find . -name "$1" 2>/dev/null
+}
+gr () {
+	rg -p $1 | less -rX
+}
+# say addstdin < totalmatches to print the sum of numbers,
+# one per line in the file "totalmatches"
+addstdin () {
+  (tr '\n' +;echo 0) | bc
+}
+# say add totalmatches to print the sum of numbers,
+# one per line in the file "totalmatches"
+add () {
+  cat "$1" | (tr '\n' +;echo 0) | bc
+}
+# say calc 12.5/2 to get 6.2500 instead of 6
+calc () {
+  echo "scale=4;$1" | bc
+}
+# say rpcalc 12.5,2,/ to get 6.2500 instead of 6
+rpcalc () {
+  echo "4k $1 p" | tr "," " " | dc;
+}
+# ppicalc pixelwidth pixelheight diagonal
+# say ppicalc 1200 800 10  to get 150 ppi
+ppicalc () {
+  echo "4k $1,2,^,$2,,2,^,+,v,$3,/ p" | tr "," " " | dc;
+}
+ds () {
+  # say ds "What is an LLM?" to ask deepseek-r1 that
+  # question
+  ollama run deepseek-r1 "$1" | cat --language=md
+}
+# say killspaces My\ Stupid\ Word\ File.doc to rename
+# it My-Stupid-Word-File.doc
+killspaces () {
+  /bin/ls "$1" | /opt/homebrew/bin/rename 's/ /-/g'
+}
+# say lls to start the llama server
+# lls () { llama-server -hf ggml-org/Qwen2.5-Coder-7B-Q8_0-GGUF --port 8012 -ngl 99 -fa -ub 1024 -b 1024 -dt 0.1 --ctx-size 0 --cache-reuse 256 }
+# say mc 2185 to make a directory by that name and
+# change to it
+mc () {
+  mkdir -p "$1" && cd "$1"
+}
+meta () {
+  ffprobe -v quiet -print_format json -show_format "$1" | jq .format.tags
+}
+# say
+#    pushLecture promptEngr 01intro
+# to push lecture 01intro to promptEngr in the website repo
+pushLecture () {
+  rsync -PUpavh --delete \
+	  $HOME/courses/$1/lecture/$2 \
+	  $HOME/other/mickmcquaid.com/jekyll/mickmcq.github.io/$1
+}
+# say
+#    ql file.pdf
+# to preview file.pdf
+ql () {
+  qlmanage -p $1 2>/dev/null &
+#  osascript <<EOD
+#    tell application "System Events"
+#        key down {command}
+#        key down {shift}
+#        keystroke (ASCII character 9)
+#        key up {command}
+#        key up {shift}
+#    end tell
+#EOD
+}
+# say qu '12:20pm 4/30 Aniket' to create a calendar entry
+# with that info
+qu () {
+  gcalcli quick "$1"
+}
+# say, e.g.,  wiki Death_valley to see the wikipedia entry for
+# Death Valley
+wiki () {
+  #lynx -dump -nolist http://en.wikipedia.org/wiki/$1 | recode latin1..u8 | less
+  w3m http://en.wikipedia.org/wiki/$1
+}
+
+# ncolumns returns a numbered list of column headings
+# usage: ncolumns filename <column delimiter>
+# e.g.,
+#      ncolumns db.txt "	"
+# gives a numbered list of headings in db.txt. Note that
+# the delimiter, a tab, is quoted by saying ctrl-V<tab>.
+ncolumns () {
+   head -n 1 "$1" | tr "$2" "\n" | nl
+}
+#
+# Say
+#    pe http://example.com example.pdf
+# to render the webpage as pdf using Minion Pro Regular
+# as the main font. Change other aspects of default.css
+# as needed. To upgrade percollate, say
+#    npm install -g percollate
+# Current version is 2.2.0
+# Further info at https://github.com/danburzo/percollate/blob/main/README.md
+# or
+#    percollate --help
+# 
+pe () {
+  percollate pdf \\
+    --style="$HOME/.config/percollate/default.css" \\
+    "$1" -o "$2"
+}
+# add a timestamp to the history at the current location
+tstamp () {
+  history -s '#' $(date)
+}
+
+# convert an epoch timestamp to a readable datetime
+# string, e.g.
+#        epoch2date 1358521100
+#
+epoch2date () {
+  gdate --date=@$1
+}
+extensions () {
+  # provide the extensions (characters after a dot) of
+  # filenames in the current folder, sorted by ascending
+  # frequency of occurrence
+ ls | perl -pe 's/([^\.]*)\.(.*)/$2/' | sort | uniq -c | sort -n
+}
+
+dugraph () {
+  # provide a sorted bar graph of gdu output, using the
+  # Perl program distribution
+  # gdu options are
+  #   s: summarize
+  #   b: report usage in bytes
+  du -sb * 2>/dev/null | /opt/homebrew/bin/distribution --palette=0,39,34,33,32 --graph
+}
+
+reversealphanum () {
+  # sort list by latter numeric part of name, e.g.,
+  #   ls cmds.* | reversealphanum
+  # gives a list of cmds files, sorted by date
+  perl -pe 's/^([^0-9]*)(.*)/$2\t$1/' | sort -n
+}
+
+# dayssincedate "May 21 2010"
+dayssincedate () {
+  calc \(`/bin/date "+%s"`-`/bin/date -j -f "%b %d %Y" "$1" "+%s"`\)/86400
+}
+
+# MJM 20120519 enables lsplus: pipe the output of ls
+# through less while retaining colors:
+#     lsplus /opt/local/bin
+# You can also add switches to ls and specifications like
+#     lsplus '-lart /opt/local/bin'
+# You can get multi-column output by saying --- and note the
+# double quotes and backquotes here
+#     lsplus "-Cw `echo $COLUMNS` /opt/local/bin"
+# where -C means multicolumn, -w means width, and `echo
+# $COLUMNS` spits out the width of the terminal. I
+lsplus () {
+  /opt/homebrew/bin/gls --color=always $1 | less -R;
+} 
+lsmulti () {
+  /opt/homebrew/bin/gls --color=always -Cw `echo $COLUMNS` $1 | less -R;
+} 
+vc() {
+    local dst="$(command vifm --choose-dir - "$@")"
+    if [ -z "$dst" ]; then
+        echo 'Directory picking cancelled/failed'
+        return 1
+    fi
+    cd "$dst"
+}
+#
+# MJM 2013-10-30 19:16 use pandoc and latex to
+# vu markdown content in pdf form
+#   vu linearregression
+# produces linearregression.pdf with intermediate
+# documents linearregression.md
+# and linearregression.tex
+vu() {
+  pandoc -t latex           \
+    --template pandocNotes  \
+    $1.md                   \
+    -o $1.tex;
+  #perl -i -pe 's/\\section\{/\\mysection{/' $1.tex;
+  #perl -i -pe 's/\\subsection\{/\\mysubsection{/' $1.tex;
+  lualatex -jobname $1 '\input{preamble-basic.tex}';
+}
+# 2022-09-10 mjm Same as vu except for quarto presentation pages or
+# screens.
+vq() {
+  pandoc -t latex           \
+    --filter pandoc-include \
+    --template pandocNotes  \
+    $1.md                   \
+    -o $1.tex;
+  #perl -i -pe 's/\\section\{/\\mysection{/' $1.tex;
+  #perl -i -pe 's/\\subsection\{/\\mysubsection{/' $1.tex;
+  lualatex -jobname $1 '\input{preamble-qo.tex}';
+}
+vuiSchool() {
+  pandoc -t latex          \
+    --template pandocNotes \
+    $1.md                  \
+    -o $1.tex;
+  lualatex -jobname $1 '\input{preamble-ischool.tex}';
+}
+# just like vu except with a bibliography
+vb() {
+  pandoc                    \
+    -t latex                \
+    --filter pandoc-include \
+    --bibliography $1.bib   \
+    --citeproc              \
+    --template pandocNotes  \
+    $1.md                   \
+    -o $1.tex;
+  #perl -i -pe 's/\\section\{/\\mysection{/' $1.tex;
+  #perl -i -pe 's/\\subsection\{/\\mysubsection{/' $1.tex;
+  lualatex -jobname $1 '\input{preamble-basic.tex}';
+}
+vf() {
+  pandoc -t latex          \
+    --filter pandoc-include \
+    --template pandocNotes \
+    $1.md                  \
+    -o $1.tex;
+  perl -i -pe 's/\\section\{/\\mysection{/' $1.tex;
+  perl -i -pe 's/\\subsection\{/\\mysubsection{/' $1.tex;
+  lualatex -jobname $1 '\PassOptionsToPackage{active}{preview}\input{preamble-basic.tex}';
+}
+ss() { # use this like   ss light single refs bla
+			 # or              ss dark double norefs bla
+			 # or              ss exec single norefs bla
+  if [ $3 == "refs" ]; then
+		pandoc -t beamer \
+			--filter pandoc-include \
+			--bibliography $4.bib   \
+			--template pandocSlides \
+			--slide-level=2 \
+			$4.md \
+			-o $4.tex;
+	else
+		pandoc -t beamer \
+			--filter pandoc-include \
+			--template pandocSlides \
+			--slide-level=2 \
+			$4.md \
+			-o $4.tex;
+	fi
+	if [ $1 == "light" ] && [ $2 == "single" ]; then
+	  xelatex -jobname $4 '\input{preamble-slides.tex}';
+	elif [ $1 == "dark" ] && [ $2 == "single" ]; then
+	  xelatex -jobname $4 '\input{preamble-darkslides.tex}';
+	elif [ $1 == "exec" ] && [ $2 == "single" ]; then
+	  xelatex -jobname $4 '\input{preamble-execstyle.tex}';
+	elif [ $1 == "light" ] && [ $2 == "double" ]; then
+	  lualatex -jobname $4 '\input{preamble-doubleslides.tex}';
+	elif [ $1 == "dark" ] && [ $2 == "double" ]; then
+	  lualatex -jobname $4 '\input{preamble-doubledarkslides.tex}';
+	else
+		echo "Unsupported combination!";
+	fi
+}
+sn() {
+  pandoc -t beamer          \
+    --template pandocSlides \
+    --slide-level=2         \
+    $1.md                   \
+    -o $1.tex;
+  xelatex -jobname $1 '\input{preamble-slidenotes.tex}';
+}
+doi2bib () {
+  curl -s "http://api.crossref.org/works/$1/transform/application/x-bibtex"
+}
+
+compact () {
+  # e.g.,
+  #   compact StupidJavaProg.java
+  # reformats the program to have 2 space indentation
+  # and java-style braces and runs it through grep to
+  # remove empty newlines
+  astyle -s2 --style=java < $1 | grep -v ^$
+}
+# dict removed the ability to say "pager /usr/bin/less"
+# in the ~/.dictrc file so this is a workaround
+di () {
+  dict "$1" | cat
+}
+# sort the output of ls by length
+sortlsbylength () {
+  /bin/ls | perl -e 'print sort { length $a <=> length $b } <>'
+}
+# shorten mYcOURSES filenames by saying shorten nnnnn
+# where nnnnn is the number after student id in the
+# filenames
+shorten () {
+  /bin/ls | /opt/homebrew/bin/rename 's/.*'$1' - //'
+  /bin/ls | /opt/homebrew/bin/rename 's/ - //'
+  /bin/ls | /opt/homebrew/bin/rename 's/, //'
+  /bin/ls | /opt/homebrew/bin/rename 's/ //g'
+}
+
+incrback () {
+  # increment tar backups of a current folder, saying
+  # incrback foldername
+  if [ -a $1older.tar ]
+   then mv $1older.tar $1oldest.tar
+  fi
+  if [ -a $1old.tar ]
+   then mv $1old.tar $1older.tar
+  fi
+  if [ -a $1.tar ]
+   then mv $1.tar $1old.tar
+  fi
+  if [ ! -a $1.tar ]
+   then tar cvf $1.tar $1/
+  fi
+}
+
+docx () {
+  unzip -p "$1" word/document.xml \
+  | sed -e 's/<\/w:p>/\
+  /g' -e 's/<[^>]*>//g'
+}
+
+pptx () {
+  pandoc -t markdown -f pptx "$1" | cat
+}
+
+# separate multiple search terms with + signs
+#goog () {
+#  lynx -width=150 -dump http://www.google.com/search?hl=en\&ie=ISO-8859-1\&q=$1\&btnG=Google+Search | recode latin1..u8 | bat
+#}
+
+rawtags () {
+  find ~/booksPapers -name "*.tags" -print0 | xargs -0 grep '.*'
+}
+listtags () {
+  find ~/booksPapers -name "*.tags" -print0 | xargs -0 grep '.*' | sed 's/.*\([A-Z][a-z]*[0-9][0-9][0-9][0-9][a-z]*\).tags:/\1	/' | tr '[:upper:]' '[:lower:]' | sort
+}
+tmx () {
+tmux new-session \; \
+	split-window -v \; \
+	split-window -h \; \
+	send-keys 'cd Downloads;ls' C-m \; \
+	select-pan -t 1 \; \
+	split-window -h \; \
+	send-keys 'colorls' C-m \; \
+	select-pan -t 3 \; \
+	send-keys 'gcal .+' C-m \; \
+	select-pan -t 1 \; \
+	send-keys 'ag' C-m \;
+}
+function ya() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+# append history rather than replacing it
+shopt -s histappend
+
+# 2021-02-23 19:54 following line seems to interfere with X11
+#test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+if command -v rbenv >/dev/null; then eval "$(rbenv init - --no-rehash bash)"; fi
+### pyenv ###
+# if command -v pyenv 1>/dev/null 2>&1; then
+#   eval "$(pyenv init -)"
+#   eval "$(pyenv virtualenv-init -)"
+# fi
+### end pyenv ###
+# source ~/perl5/perlbrew/etc/bashrc
+# following seems to be more for zsh ... not sure
+# source $(dirname $(gem which colorls))/tab_complete.sh
+
+# heroku autocomplete setup
+# HEROKU_AC_BASH_SETUP_PATH=/Users/mcq/Library/Caches/heroku/autocomplete/bash_setup && test -f $HEROKU_AC_BASH_SETUP_PATH && source $HEROKU_AC_BASH_SETUP_PATH;
+
+#source /Users/mcq/.config/broot/launcher/bash/br
+
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+#eval $(/opt/homebrew/bin/brew shellenv)
+#[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+# Set up fzf key bindings and fuzzy completion
+# eval "$(fzf --bash)"
+
+##
+# Your previous /Users/mm223266/.bash_profile file was backed up as /Users/mm223266/.bash_profile.macports-saved_2025-08-17_at_12:15:06
+##
+
+# MacPorts Installer addition on 2025-08-17_at_12:15:06: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+
+# MacPorts Installer addition on 2025-08-17_at_12:15:06: adding an appropriate MANPATH variable for use with MacPorts.
+export MANPATH="/opt/local/share/man:$MANPATH"
+# Finished adapting your MANPATH environment variable for use with MacPorts.
+
+# export PATH="/Users/mm223266/.pyenv/shims:$PATH"
+
+[[ ! ${BLE_VERSION-} ]] || ble-attach

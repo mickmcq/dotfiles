@@ -1,0 +1,134 @@
+#export TERM="screen-256color"
+#export RTF2LATEX2E_DIR="/usr/local/rtf2latex2e"
+#export MONTYLINGUA='/Users/mcq/tools/montylingua-2.1/python'
+#export LS_COLORS='no=00:fi=00:di=01;96:ln=01;36:pi=40;33:so=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;33:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jpg=01;35:*.png=01;35:*.gif=01;35:*.bmp=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.png=01;35:*.mpg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.tex=01;37:*.pdf=01;31:*.log=01;30:*.aux=01;30:*~=01;30:*.toc=01;30:'
+#export LS_COLORS='no=00:fi=00:di=46;30:ln=01;36:pi=40;33:so=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;33:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jpg=01;35:*.png=01;35:*.gif=01;35:*.bmp=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.png=01;35:*.mpg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.tex=01;37:*.pdf=01;33:*.log=01;30:*.aux=01;30:*~=01;30:*.toc=01;30:*.bib=02;34:*.txt=01;29:*.dmg=01;31:'
+#export LS_COLORS='no=00:fi=00:di=38;5;197:ln=01;36:pi=40;33:so=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;33:*.tar=38;5;57:*.tgz=38;5;94:*.arj=38;5;94:*.taz=38;5;94:*.lzh=38;5;94:*.zip=38;5;94:*.z=38;5;94:*.Z=38;5;94:*.gz=38;5;94:*.bz2=38;5;94:*.deb=01;31:*.rpm=01;31:*.jpg=38;5;117:*.tsv=38;5;144:*.png=38;5;157:*.gif=01;35:*.bmp=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.mpg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.tex=01;37:*.pdf=38;5;228:*.log=01;30:*.aux=01;30:*~=01;30:*.toc=01;30:*.bib=38;5;63:*.txt=01;29:*.dmg=38;5;94:*.html=38;5;140:*.mp4=38;5;60:*.mp3=38;5;220'
+# export LSCOLORS=gxfxcxbxdxegedabagacad
+# export LS_COLORS='no=00:fi=00:di=01;33:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.txt=01;31:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.flac=01;35:*.mp3=01;35:*.pdf=02;32:*.mpc=01;35:*.ogg=01;35:*.wav=01;35:'
+# 2014-06-16 13:45 mjm replaced one of the above
+# LS_COLORS definitions with the following from
+#   https://github.com/trapd00r/LS_COLORS
+# which I installed in ~/.dircolors/LS_COLORS
+# and invoke as follows:
+#eval $( /usr/local/opt/coreutils/libexec/gnubin/dircolors -b $HOME/.dircolors/LS_COLORS)
+eval $( /opt/homebrew/opt/coreutils/libexec/gnubin/dircolors -b $HOME/.dircolors/LS_COLORS)
+unset INPUTRC
+set -o vi
+# provide hfstar
+# alias tar /usr/local/tar
+# alias lynx=/Applications/lynx.command
+# alias ls='/bin/ls -G'
+# alias ls='/usr/local/bin/ls --color=always'
+# export CLICOLOR=true
+#export PS1='\[\033k\033\\\]\u@\h:\w\$ '
+#export PS1='\[\033k\033\\\]\W\$ '
+#export PS1="\033k\033\134@\W\n\033[1A "
+# 2011-09-04 20:53 MJM following is pure legerdemain
+#  involving settings in .screenrc and make-screen-status.
+#  The main point is that the \W appears before a
+#  newline, telling screen to incorporate it as a
+#  shelltitle, while the stuff after it is (A) an escape
+#  sequence to make the prompt go back up a line, then a
+#  fake \W to get the prompt out to the right of the
+#  original \W output. Phew!
+#export PS1='\[\033k\033\134\]@\W\n\[\033[1A\]\W \$ '
+#export PS1='\[\033k\033\\\][\W] \$ '
+#export PS1="\[\e]0;\w\a\]$PS1"
+#export PS1="\$ "
+# following gives a white terminal prompt
+# color changes must be enclosed in \[\033[ and m\]
+# colors include 31 red 32 green 33 yellow 34 blue 35
+# magenta 36 cyan 37 white and 0 reset
+# export PS1='\[\033[37m\]\[\033k\W\033\\\][\W] \$ \[\033[0m\] '
+# alias dvim='mvim "+Search \# \*.*""+colorscheme tutticolori"'
+# alias dvim='mvim -c "colo tutticolori" -c "Search \# \*.*"'
+# alias vtn='echo "X[mX(BX)0OX[?5lX7X[rX8" | tr "XO" "\033\017"'
+# alias units='/usr/local/bin/units'
+umask 022
+#export PROMPT_COMMAND=make-screen-status
+#export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
+#export PROMPT_COMMAND='
+# MYPWD="${PWD/#$HOME/~}"
+# [ ${#MYPWD} -gt 20 ] && MYPWD=..${MYPWD:${#MYPWD}-18}
+# echo -n -e "\033k$MYPWD\033\\"
+#'
+# installation of local::lib 2011-01-11 MJM
+# eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+# Sets the Mail Environment Variable
+# MAIL=/var/spool/mail/mm223266 && export MAIL
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+# following is from a failed attempt to install
+# powerline
+#export PATH="$PATH:$HOME/Library/Python/2.7/bin"
+#export PATH="$PATH:$HOME/Library/Python/3.7/bin"
+#export PATH="$PATH:$HOME/Library/Python/3.8/bin"
+#export POWERLINE_COMMAND=$HOME/Library/Python/3.7/bin/powerline
+#export POWERLINE_COMMAND=$HOME/Library/Python/3.8/bin/powerline
+#export POWERLINE_COMMAND=/usr/local/bin/powerline
+#export POWERLINE_COMMAND=/opt/homebrew/bin/powerline
+
+#alias python="/usr/local/bin/python3"
+#/Users/mcq/Library/Python/3.8/bin/powerline-daemon -q
+#/opt/homebrew/bin/powerline-daemon -q
+#POWERLINE_BASH_CONTINUATION=1
+#POWERLINE_BASH_SELECT=1
+#. /Users/mcq/Library/Python/3.8/lib/python/site-packages/powerline/bindings/bash/powerline.sh
+#. . /opt/homebrew/lib/python3.10/site-packages/powerline/bindings/bash/powerline.sh
+# alias svim='vim -u ~/.SpaceVim/vimrc'
+
+# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# eval "$(pyenv init -)"
+
+# heroku autocomplete setup
+# HEROKU_AC_BASH_SETUP_PATH=/Users/mcq/Library/Caches/heroku/autocomplete/bash_setup && test -f $HEROKU_AC_BASH_SETUP_PATH && source $HEROKU_AC_BASH_SETUP_PATH;
+#source /Users/mcq/.config/broot/launcher/bash/br
+export BASH_SILENCE_DEPRECATION_WARNING=1
+export GOPATH=/opt/homebrew
+function _update_ps1() {
+    PS1="$($GOPATH/bin/powerline-go -colorize-hostname -cwd-max-depth 4 -hostname-only-if-ssh -modules "venv,host,ssh,cwd,perms,git,hg,jobs,exit" -condensed -error $? -jobs $(jobs -p | wc -l))"
+
+    # Uncomment the following line to automatically clear errors after showing
+    # them once. This not only clears the error for powerline-go, but also for
+    # everything else you run in that shell. Don't enable this if you're not
+    # sure this is what you want.
+
+    #set "?"
+}
+
+if [ "$TERM" != "linux" ] && [ -f "$GOPATH/bin/powerline-go" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
+
+# export PYENV_ROOT="$HOME/.pyenv"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+_edit_wo_executing() {
+    local editor="${EDITOR:-vim}"
+    tmpf="$(mktemp).sh"
+    printf '%s\n' "$READLINE_LINE" > "$tmpf"
+    $editor "$tmpf"
+    READLINE_LINE="$(<"$tmpf")"
+    READLINE_POINT="${#READLINE_LINE}"
+    rm "$tmpf"
+}
+
+bind -x '"\C-x\C-e":_edit_wo_executing'
+export PATH="$HOME/.local/bin:$PATH"
+[[ $- == *i* ]] && source ~/.local/share/blesh/ble.sh --attach=none
+#source ~/.llama-completion.bash
+declare -- _ble_bash="50299"
+# for todoist-cli-go
+PROG=todoist source "$HOME/.config/todoist/bash_autocomplete"
+brew_prefix=$(brew --prefix)
+ if [[ -x ${brew_prefix}/bin/lesspipe.sh ]]; then
+     export LESSOPEN="|${brew_prefix}/bin/lesspipe.sh %s"
+     export LESS_ADVANCED_PREPROCESSOR=1
+ fi
