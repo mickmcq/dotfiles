@@ -5,16 +5,13 @@
 [user]
 	name = mickmcq
 	email = mickmcquaid@gmail.com
-[credential]
-	helper = store
-	helper = store
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
 [core]
-	excludesfile = /Users/mm223266/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [credential "https://github.com"]
 	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential
