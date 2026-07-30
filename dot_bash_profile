@@ -2,7 +2,7 @@ source ~/.profile
 . ~/.bashrc
 source ~/.api_keys
 export ANTHROPIC_SKILLS_PATH="$HOME/.claude/skills"
-export BUN_INSTALL="$HOME/.bun"
+# export BUN_INSTALL="$HOME/.bun"
 export ENV=$HOME/.bashrc
 # export JAVA_HOME=`/usr/libexec/java_home 13.0.1`
 export CALIBRE=/Applications/calibre.app/Contents/MacOS/
@@ -27,9 +27,13 @@ export R_HISTFILE=~/.Rhistory
 # tab as command completion) to history; do not write a
 # duplicate of the previous line to history:
 export HISTIGNORE="&:[ 	]*"
+# Avoid storing duplicate commands
+export HISTCONTROL=ignoreboth:erasedups
+# Append to the history file rather than overwriting it
+shopt -s histappend
 export HISTFILESIZE=10000
 export HISTSIZE=10000
-export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=1
+# export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=1
 
 export LIBRARY_PATH=$LIBRARY_PATH:/opt/homebrew/opt/openssl/lib/
 
@@ -50,7 +54,7 @@ export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="/opt/homebrew/lib/ruby/gems/4.0.0/bin:$PATH"
 export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
 export PATH="/opt/homebrew/opt/file-formula/bin:$PATH"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 # export PYENV_ROOT="$HOME/.pyenv"
 # [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -97,7 +101,7 @@ alias duh='du -hd 0 * .[a-zA-Z]* 2>/dev/null | gsort -h'
 # alias goog='googler --count 4 -x --colors bjdxxy '
 alias grep='grep -E'
 alias less='less -r'
-alias listebooks="find ~/ -name "*.tags" -print0 2>/dev/null | xargs -0 grep ebook | perl -pe 's/^\/Users.*\/(\w[A-Za-z-]+\d\d\d\d\w?).tags:ebook/\$1/' | sort -k 2"
+alias listebooks="find ~/booksPapers/ -name "*.tags" -print0 2>/dev/null | xargs -0 grep ebook | perl -pe 's/^\/Users.*\/(\w[A-Za-z-]+\d\d\d\d\w?).tags:ebook/\$1/' | sort -k 2"
 # must first run llama-server in a separate window for llmc to work,
 # e.g., llama-server -m   /Users/mm223266/local-llm-models/Qwen3.6-35B-A3B-Q8_0.gguf --port 8080 -c 4096
 alias llmc='llm chat -m llama-server'
@@ -105,8 +109,8 @@ alias llms='llama-server -m   $HOME/local-llm-models/Qwen3.6-35B-A3B-Q8_0.gguf -
 alias lls='llama-server --fim-qwen-7b-default'
 alias ls='/opt/homebrew/bin/gls --color=always --hyperlink=auto'
 #alias news='lynx -dump -nolist "http://news.google.com/news?pz=1&ned=us&hl=en&hdlOnly=1 " | recode latin1..u8 | less'
-# mathicsscript: disable the Asymptote co-process (TeXLive asy leaks an orphan
-# per launch that holds output open / hangs piping). matplotlib handles 2D plots.
+# mathicsscript: disable the Asymptote co-process for 3D rendering (TeXLive asy leaks an orphan
+#   per launch that holds output open / hangs piping). matplotlib handles 2D plots.
 export ASY_PROG=/usr/bin/false
 alias ma='mathicsscript -e vi'
 alias mv='mv -i'
@@ -118,7 +122,7 @@ alias qr='quarto render '
 alias r='arf'
 # make ranger exit to the most recent dir
 # alias ra='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
-alias ringbell="echo -n ^G"
+alias ringbell="printf '\a'"
 alias tar='/opt/homebrew/bin/gtar'
 alias td='todoist'
 alias thes='dict -d moby-thesaurus'
@@ -155,18 +159,18 @@ currip() {
 # spaces, so $5 is only the first part of the filename,
 # so we have to iterate from $6 to NF, the total number
 # of fields, to get that.
-lstimes () {
-  #/usr/local/bin/ls  -g -G --time-style=+%F-%T \
-  /opt/homebrew/bin/gls  -g -G --time-style=+%F-%T \
-  | awk '{ printf  "%s\t%s",$4,$5; for (i=6;i<=NF;i++) printf " %s",$i; printf "\n" }' ;
-}
+# lstimes () {
+#   #/usr/local/bin/ls  -g -G --time-style=+%F-%T \
+#   /opt/homebrew/bin/gls  -g -G --time-style=+%F-%T \
+#   | awk '{ printf  "%s\t%s",$4,$5; for (i=6;i<=NF;i++) printf " %s",$i; printf "\n" }' ;
+# }
 # say, e.g., flstimes "*.pdf" to see pdf files with timestamps
 #         or flstimes "*.pdf" | sort -n to see them time-sorted
-flstimes () {
-  find . -name "$1" -print0 2>/dev/null \
-  | xargs -0 /opt/homebrew/bin/gls  -g -G --time-style=+%F-%T \
-  | awk '{ printf  "%s\t%s",$4,$5; for (i=6;i<=NF;i++) printf " %s",$i; printf "\n" }' ;
-} 
+# flstimes () {
+#   find . -name "$1" -print0 2>/dev/null \
+#   | xargs -0 /opt/homebrew/bin/gls  -g -G --time-style=+%F-%T \
+#   | awk '{ printf  "%s\t%s",$4,$5; for (i=6;i<=NF;i++) printf " %s",$i; printf "\n" }' ;
+# } 
 # say, e.g., filesizes "*.txt" to see txt files with sizes
 filesizes () {
   find . -name "$1" -print0 2>/dev/null \
@@ -189,9 +193,9 @@ filepatterns () {
 fn () {
   find . -name "$1" 2>/dev/null
 }
-gr () {
-	rg -p $1 | less -rX
-}
+# gr () {
+# 	rg -p $1 | less -rX
+# }
 # say addstdin < totalmatches to print the sum of numbers,
 # one per line in the file "totalmatches"
 addstdin () {
@@ -215,11 +219,11 @@ rpcalc () {
 ppicalc () {
   echo "4k $1,2,^,$2,,2,^,+,v,$3,/ p" | tr "," " " | dc;
 }
-ds () {
-  # say ds "What is an LLM?" to ask deepseek-r1 that
-  # question
-  ollama run deepseek-r1 "$1" | cat --language=md
-}
+# ds () {
+#   # say ds "What is an LLM?" to ask deepseek-r1 that
+#   # question
+#   ollama run deepseek-r1 "$1" | cat --language=md
+# }
 # say killspaces My\ Stupid\ Word\ File.doc to rename
 # it My-Stupid-Word-File.doc
 killspaces () {
@@ -238,11 +242,11 @@ meta () {
 # say
 #    pushLecture promptEngr 01intro
 # to push lecture 01intro to promptEngr in the website repo
-pushLecture () {
-  rsync -PUpavh --delete \
-	  $HOME/courses/$1/lecture/$2 \
-	  $HOME/other/mickmcquaid.com/jekyll/mickmcq.github.io/$1
-}
+# pushLecture () {
+#   rsync -PUpavh --delete \
+# 	  $HOME/courses/$1/lecture/$2 \
+# 	  $HOME/other/mickmcquaid.com/jekyll/mickmcq.github.io/$1
+# }
 # say
 #    ql file.pdf
 # to preview file.pdf
@@ -484,29 +488,29 @@ sortlsbylength () {
 # shorten mYcOURSES filenames by saying shorten nnnnn
 # where nnnnn is the number after student id in the
 # filenames
-shorten () {
-  /bin/ls | /opt/homebrew/bin/rename 's/.*'$1' - //'
-  /bin/ls | /opt/homebrew/bin/rename 's/ - //'
-  /bin/ls | /opt/homebrew/bin/rename 's/, //'
-  /bin/ls | /opt/homebrew/bin/rename 's/ //g'
-}
+# shorten () {
+#   /bin/ls | /opt/homebrew/bin/rename 's/.*'$1' - //'
+#   /bin/ls | /opt/homebrew/bin/rename 's/ - //'
+#   /bin/ls | /opt/homebrew/bin/rename 's/, //'
+#   /bin/ls | /opt/homebrew/bin/rename 's/ //g'
+# }
 
-incrback () {
-  # increment tar backups of a current folder, saying
-  # incrback foldername
-  if [ -a $1older.tar ]
-   then mv $1older.tar $1oldest.tar
-  fi
-  if [ -a $1old.tar ]
-   then mv $1old.tar $1older.tar
-  fi
-  if [ -a $1.tar ]
-   then mv $1.tar $1old.tar
-  fi
-  if [ ! -a $1.tar ]
-   then tar cvf $1.tar $1/
-  fi
-}
+# incrback () {
+#   # increment tar backups of a current folder, saying
+#   # incrback foldername
+#   if [ -a $1older.tar ]
+#    then mv $1older.tar $1oldest.tar
+#   fi
+#   if [ -a $1old.tar ]
+#    then mv $1old.tar $1older.tar
+#   fi
+#   if [ -a $1.tar ]
+#    then mv $1.tar $1old.tar
+#   fi
+#   if [ ! -a $1.tar ]
+#    then tar cvf $1.tar $1/
+#   fi
+# }
 
 docx () {
   unzip -p "$1" word/document.xml \
@@ -529,19 +533,19 @@ rawtags () {
 listtags () {
   find ~/booksPapers -name "*.tags" -print0 | xargs -0 grep '.*' | sed 's/.*\([A-Z][a-z]*[0-9][0-9][0-9][0-9][a-z]*\).tags:/\1	/' | tr '[:upper:]' '[:lower:]' | sort
 }
-tmx () {
-tmux new-session \; \
-	split-window -v \; \
-	split-window -h \; \
-	send-keys 'cd Downloads;ls' C-m \; \
-	select-pan -t 1 \; \
-	split-window -h \; \
-	send-keys 'colorls' C-m \; \
-	select-pan -t 3 \; \
-	send-keys 'gcal .+' C-m \; \
-	select-pan -t 1 \; \
-	send-keys 'ag' C-m \;
-}
+# tmx () {
+# tmux new-session \; \
+# 	split-window -v \; \
+# 	split-window -h \; \
+# 	send-keys 'cd Downloads;ls' C-m \; \
+# 	select-pan -t 1 \; \
+# 	split-window -h \; \
+# 	send-keys 'colorls' C-m \; \
+# 	select-pan -t 3 \; \
+# 	send-keys 'gcal .+' C-m \; \
+# 	select-pan -t 1 \; \
+# 	send-keys 'ag' C-m \;
+# }
 function ya() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
@@ -549,9 +553,6 @@ function ya() {
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
-# append history rather than replacing it
-shopt -s histappend
-
 # 2021-02-23 19:54 following line seems to interfere with X11
 #test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 if command -v rbenv >/dev/null; then eval "$(rbenv init - --no-rehash bash)"; fi
@@ -581,12 +582,12 @@ if command -v rbenv >/dev/null; then eval "$(rbenv init - --no-rehash bash)"; fi
 ##
 
 # MacPorts Installer addition on 2025-08-17_at_12:15:06: adding an appropriate PATH variable for use with MacPorts.
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # Finished adapting your PATH environment variable for use with MacPorts.
 
 
 # MacPorts Installer addition on 2025-08-17_at_12:15:06: adding an appropriate MANPATH variable for use with MacPorts.
-export MANPATH="/opt/local/share/man:$MANPATH"
+# export MANPATH="/opt/local/share/man:$MANPATH"
 # Finished adapting your MANPATH environment variable for use with MacPorts.
 
 # export PATH="/Users/mm223266/.pyenv/shims:$PATH"
