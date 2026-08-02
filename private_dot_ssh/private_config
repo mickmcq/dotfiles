@@ -1,0 +1,5 @@
+Host *
+  AddKeysToAgent yes
+  IgnoreUnknown UseKeychain
+  UseKeychain yes
+  IdentityFile  /Users/mm223266/.ssh/id_ed25519

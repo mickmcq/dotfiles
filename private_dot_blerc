@@ -1,0 +1,4 @@
+ble-bind -f 'C-x w' 'insert-string "cd ~/other/mickmcquaid.com/jekyll/mickmcq.github.io"'
+ble-bind -f 'C-x i' 'insert-string "llama-mtmd-cli -hf unsloth/gemma-3-12b-it-GGUF:Q4_K_XL"'
+
+set -o vi

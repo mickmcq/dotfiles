@@ -5,5 +5,21 @@ README.md
 .config/kitty/bla.lua
 .config/kitty/kitty.conf.bak
 
+# yazi: plugins are git clones, restored by `ya pkg install` from package.toml
+.config/yazi/plugins
+
+# cmus: cache, history, playlists — runtime state, not config
+.config/cmus/autosave
+.config/cmus/cache
+.config/cmus/command-history
+.config/cmus/lib.pl
+.config/cmus/playlists
+.config/cmus/search-history
+
+# ssh: only ~/.ssh/config is managed — key material never belongs here
+.ssh/id_*
+.ssh/known_hosts*
+.ssh/agent
+
 # git: plaintext credentials (credential.helper=store) — never commit
 .git-credentials

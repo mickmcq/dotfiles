@@ -1,0 +1,12 @@
+set editing-mode vi
+set keymap vi
+# evidently bind is not a recognized keyword here, so
+# lowercase b misbehaves if I uncomment any of the
+# following four lines!
+bind -m vi-command "\C-l":end-of-history
+bind -m vi-command "\C-f":beginning-of-history
+bind -m vi-command b:backward-word
+bind -m vi-command h:backward-char
+#"\C-l":end-of-history
+#"\C-f":beginning-of-history
+#set show-all-if-ambiguous on

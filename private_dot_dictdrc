@@ -1,0 +1,4 @@
+database oed {
+  data /Users/mm223266/.dict/oed.dict
+  index /Users/mm223266/.dict/oed.index
+}

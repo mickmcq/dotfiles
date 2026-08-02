@@ -1,0 +1,106 @@
+# Load secrets from ~/.secrets, the single source of truth (age-encrypted in
+# the dotfiles repo, sourced by ~/.bash_profile for shells). Parsing it here as
+# well is what makes the keys reach GUI sessions: RStudio.app and R.app launch
+# without the login shell's environment, which is why these keys were once
+# duplicated into ~/.Renviron. Anything already set in the environment wins, so
+# a shell export still overrides the file.
+# Only the base package is loaded when .Rprofile runs -- base functions only.
+local({
+  f <- path.expand("~/.secrets")
+  if (!file.exists(f)) return(invisible(NULL))
+  kv <- grep("^\\s*export\\s+[A-Za-z_][A-Za-z0-9_]*=",
+             readLines(f, warn = FALSE), value = TRUE)
+  if (!length(kv)) return(invisible(NULL))
+  kv   <- sub("^\\s*export\\s+", "", kv)
+  keys <- sub("=.*$", "", kv)
+  vals <- sub("^[^=]*=", "", kv)
+  vals <- sub('^"(.*)"$', "\\1", vals)   # strip one layer of quoting
+  vals <- sub("^'(.*)'$", "\\1", vals)
+  new  <- !nzchar(Sys.getenv(keys))
+  if (any(new)) {
+    args <- as.list(vals[new])
+    names(args) <- keys[new]
+    do.call(Sys.setenv, args)
+  }
+})
+
+# if (Sys.getenv("TERM") == "bla") {
+# if (Sys.getenv("TERM") == "xterm-256color") {
+#   require("colorout")
+#   setOutputColors256(
+#     normal   =  40,
+#     number   = 214,
+#     string   =  85,
+#     const    =  35,
+#     stderror =  45,
+#     error    = c(1, 0, 1),
+#     warn     = c(1, 0, 100)
+#   )
+# }
+if (interactive()) {
+  .Last <- function() try(savehistory("~/.Rhistory"))
+}
+# Make save=no the default upon quitting R
+utils::assignInNamespace(
+  "q",
+  function(save = "no", status = 0, runLast = TRUE) 
+  {
+    .Internal(quit(save, status, runLast))
+  }, 
+  "base"
+)
+# Set screen width either to a number passed, e.g.,
+#    wideScreen(200)
+# or to the terminal width by calling
+#    wideScreen()
+wideScreen <- function(howWide=Sys.getenv("COLUMNS")) {
+  options(width=as.integer(howWide))
+}
+## Default repo
+#local({r <- getOption("repos")
+#       r["CRAN"] <- "https://cran.wustl.edu/"
+#       options(repos=r)
+#})
+options(repos=structure(c(CRAN="https://mirrors.nics.utk.edu/cran/")))
+# options(repos=structure(c(CRAN="https://cran.wustl.edu/")))
+# options(repos=structure(c(CRAN="https://mirror.las.iastate.edu/CRAN/")))
+# options(repos=structure(c(CRAN="https://cloud.r-project.org/")))
+options("help_type"="html")
+# emulate the utility of uniq -c
+# assumes tidyverse is loaded
+uniqdashc <- function(x,y) {
+  # x is a dataframe; y is a column in that dataframe,
+  # e.g., uniqdashc(Carseats,Education)
+  # or say uniqdashc(Carseats,Education) |> arrange(Education)
+  # to sort ascending by Education
+  # Note:
+  # this construct is superseded by, say:
+  # Carseats |> count(Education)
+  # or:
+  # Carseats |> count(Education) |> arrange(n) # to sort ascending numbers
+  # or:
+  # Carseats |> count(Education) |> arrange(desc(n)) # to sort descending by count
+  y <- enquo(y)
+  x |>
+    dplyr::select(!!y) |>
+    group_by(!!y) |>
+    dplyr::mutate(count=n()) |>
+    unique() |>
+    arrange(desc(count))
+}
+stemr <- function(data,z=1) {
+  out <- capture.output(stem(data,scale=z))
+  out <- c(out[1:3],rev(out[4:length(out)]))
+  cat(out,sep="\n")
+}
+Sys.setenv(RETICULATE_PYTHON="/Users/mm223266/.local/bin/python3")
+# maybe this stores my github_pat
+#require(credentials)
+#set_github_pat()
+Sys.setenv(STATS_DATA_DIR="~/courses/stats/data")
+Sys.setenv(VIS_DATA_DIR="/Users/mm223266/courses/visAnalytics/data")
+
+options(install.packages.check.source = "no")
+update.packages <- function(...) {
+  utils::update.packages(lib.loc = Sys.getenv("R_LIBS_USER"), ...)
+}

@@ -1,0 +1,3 @@
+set start_view=browser
+bind -f common q quit
+set output_plugin=ao

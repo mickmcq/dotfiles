@@ -1,6 +1,6 @@
 source ~/.profile
 . ~/.bashrc
-source ~/.api_keys
+source ~/.secrets
 export ANTHROPIC_SKILLS_PATH="$HOME/.claude/skills"
 # export BUN_INSTALL="$HOME/.bun"
 export ENV=$HOME/.bashrc
@@ -12,7 +12,7 @@ export CALIBRE=/Applications/calibre.app/Contents/MacOS/
 # export WNHOME=/usr/local/WordNet-2.1
 export CLICOLOR=1;
 export EDITOR="/opt/homebrew/bin/nvim"
-# GOG_ACCOUNT is exported from ~/.api_keys (sourced above) to keep the
+# GOG_ACCOUNT is exported from ~/.secrets (sourced above) to keep the
 # email address out of this public dotfile
 export VISUAL="/opt/homebrew/bin/nvim"
 export SHELL="/opt/homebrew/bin/bash"

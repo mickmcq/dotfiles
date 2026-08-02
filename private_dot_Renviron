@@ -1,0 +1,10 @@
+# Non-secret R startup variables only.
+#
+# Secrets used to live here too; they now live in ~/.secrets (age-encrypted in
+# the dotfiles repo) and are loaded into the R session by ~/.Rprofile.
+#
+# R_LIBS_USER must stay in this file: it is consumed during R's startup, before
+# .Rprofile is evaluated, so it cannot be set from there.
+R_LIBS_USER='~/Library/R/arm64/%v/library'
+R_MAX_VSIZE=1000000000000
+RETICULATE_AUTOCONFIGURE=FALSE

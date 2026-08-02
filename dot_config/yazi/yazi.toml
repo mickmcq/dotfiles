@@ -1,0 +1,15 @@
+[plugin]
+prepend_previewers = [
+  { url = "*.epub", run = "epub" },
+  { url = "*.qmd", run = 'piper -- rich -m --force-terminal --max-width=$w "$1"' }, # quarto: rich -m forces markdown rendering (rich won't auto-detect .qmd)
+  { url = "*.html", run = 'piper -- w3m "$1"' },
+  { url = "*.md", run = "rich-preview" },
+	{ url = "*.docx", run = "office" },
+	{ url = "*.xlsx", run = "office" },
+	{ url = "*.pptx", run = "office" }
+]
+
+prepend_preloaders= [
+  { url = "*.epub", run = "epub" },
+]
+
