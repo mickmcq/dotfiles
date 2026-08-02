@@ -34,7 +34,10 @@ Encryption uses **age**. The private key lives at `~/.config/chezmoi/key.txt`
 
 ### 0. Prerequisites
 
+The first command below comes from [https://brew.sh](https://brew.sh), and may change over time. It may be better to view that URL to copy the latest command. Then run the following two commands.
+
 ```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install chezmoi age gh
 gh auth login          # enables HTTPS git pulls (no SSH key needed)
 ```
