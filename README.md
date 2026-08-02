@@ -3,6 +3,8 @@
 Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 Source repo: `github.com/mickmcq/dotfiles` → applied to `$HOME`.
 
+Note: this repo assumes I am using chezmoi, macOS, kitty, bash, brew, NeoVim, R, and a large assortment of mostly terminal-based utilities, some core utilities, some related to teaching, and some related to music. It is probably easier to install everything, then subtract the things you don't want, than to rebuild this piecemeal. The best place to subtract things is in the Brewfile. Also, I advise you to create your own `.secrets` file.
+
 ## What's here
 
 | Source file | Target | Notes |
