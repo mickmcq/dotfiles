@@ -8,8 +8,10 @@ Source repo: `github.com/mickmcq/dotfiles` → applied to `$HOME`.
 | Source file | Target | Notes |
 | --- | --- | --- |
 | `private_dot_bashrc` | `~/.bashrc` | `private_` = mode 600 on apply |
-| `dot_bash_profile` | `~/.bash_profile` | sources `~/.api_keys` |
+| `dot_bash_profile` | `~/.bash_profile` | sources `~/.profile` and `~/.api_keys` |
+| `private_dot_profile` | `~/.profile` | sets `LANG=en_US.UTF-8` when that locale exists |
 | `encrypted_private_dot_api_keys.age` | `~/.api_keys` | age-encrypted secrets |
+| `private_dot_dircolors/private_LS_COLORS` | `~/.dircolors/LS_COLORS` | [trapd00r/LS_COLORS](https://github.com/trapd00r/LS_COLORS) palette, dir mode 700; loaded by `~/.bashrc` via GNU `dircolors` (needs `coreutils`) |
 | `dot_config/nvim-private/encrypted_private_personal.lua.age` | `~/.config/nvim-private/personal.lua` | age-encrypted, machine-local nvim settings |
 | `dot_config/private_kitty/` | `~/.config/kitty/` | kitty terminal config, dir mode 700; runtime state/backups excluded via `.chezmoiignore` |
 | `dot_homebrew/Brewfile` | `~/.homebrew/Brewfile` | Homebrew manifest (taps/brews/casks); install with `brew bundle --global` |
