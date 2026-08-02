@@ -3,7 +3,7 @@
 Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 Source repo: `github.com/mickmcq/dotfiles` → applied to `$HOME`.
 
-Note: this repo assumes I am using chezmoi, macOS, kitty, bash, brew, NeoVim, R, and a large assortment of mostly terminal-based utilities, some core utilities, some related to teaching, and some related to music. It is probably easier to install everything, then subtract the things you don't want, than to rebuild this piecemeal. The best place to subtract things is in the Brewfile. Also, I advise you to create your own `.secrets` file.
+Note: this repo assumes I am using chezmoi, macOS, kitty, bash, brew, NeoVim, R, and a large assortment of mostly terminal-based utilities, some core utilities, some related to teaching, and some related to music. It is probably easier to install everything, then subtract the things you don't want, than to rebuild this piecemeal. The best place to subtract things is in the Brewfile. Also, I advise you to create your own `.secrets` file. I explain this further in a video on [YouTube]().
 
 ## What's here
 
@@ -112,6 +112,8 @@ chezmoi init --apply mickmcq
 This clones this repo, applies the bash files, **decrypts** `.secrets` and
 `personal.lua` using `key.txt`, and **clones** the nvim external into
 `~/.config/nvim`. It also lays down `~/.homebrew/Brewfile`.
+
+Before you move on to step 3, you may want to examine `~/.homebrew/Brewfile` and delete unwanted packages. There are over 130 packages, though, so it can be a tedious process! It may be easier to install everything, then subtract the things you don't want gradually over time.
 
 ### 3. Install all packages
 
