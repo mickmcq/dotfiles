@@ -34,7 +34,9 @@ Encryption uses **age**. The private key lives at `~/.config/chezmoi/key.txt`
 
 ### 0. Prerequisites
 
-The first command below comes from [https://brew.sh](https://brew.sh), and may change over time. It may be better to view that URL to copy the latest command. Then run the following two commands.
+The following process assumes that `bash` is your shell. If you use this on a new macOS machine, you may find that `zsh` is your shell. I installed `bash` from brew in a later step, detailed below. The changes to your configuration won't take effect until after that step.
+
+The first command below comes from [https://brew.sh](https://brew.sh), and may change over time. It may be better to view that URL to copy the latest command. Then run the second and third commands.
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -78,6 +80,16 @@ This clones this repo, applies the bash files, **decrypts** `.api_keys` and
 ```bash
 brew bundle --global          # installs all taps, brews, casks (incl. powerline-go)
 ```
+
+The most important package is `bash`. After installing it, you need to say
+
+```bash
+chsh -s /opt/homebrew/bin/bash
+```
+
+Even this may not be enough. I have sometimes had to also manually add `/opt/homebrew/bin/bash` to `/etc/shells`. On the other hand, in one case it was automatically added without my knowing intervention.
+
+One package that is not added in the above process is `ble.sh`. That package must be installed separately, using the instructions at [https://github.com/akinomyoga/ble.sh](https://github.com/akinomyoga/ble.sh).
 
 ### 4. Verify
 
