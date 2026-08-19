@@ -40,15 +40,24 @@ local({
 if (interactive()) {
   .Last <- function() try(savehistory("~/.Rhistory"))
 }
-# Make save=no the default upon quitting R
-utils::assignInNamespace(
-  "q",
-  function(save = "no", status = 0, runLast = TRUE) 
-  {
-    .Internal(quit(save, status, runLast))
-  }, 
-  "base"
-)
+# Make save=no the default upon quitting R. Only worth doing interactively, and
+# it has to be guarded: a subprocess that sources this file *after* startup --
+# callr does, which is how the R language server runs diagnostics -- finds the
+# base namespace already sealed, and the bare call errors out with "locked
+# binding of 'q' cannot be changed", halting the session.
+if (interactive()) {
+  try(
+    utils::assignInNamespace(
+      "q",
+      function(save = "no", status = 0, runLast = TRUE)
+      {
+        .Internal(quit(save, status, runLast))
+      },
+      "base"
+    ),
+    silent = TRUE
+  )
+}
 # Set screen width either to a number passed, e.g.,
 #    wideScreen(200)
 # or to the terminal width by calling
