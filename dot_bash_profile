@@ -5,7 +5,7 @@ export ANTHROPIC_SKILLS_PATH="$HOME/.claude/skills"
 # export BUN_INSTALL="$HOME/.bun"
 export ENV=$HOME/.bashrc
 # export JAVA_HOME=`/usr/libexec/java_home 13.0.1`
-export CALIBRE=/Applications/calibre.app/Contents/MacOS/
+export CALIBRE="$HOME/Applications/calibre.app/Contents/MacOS/"
 # export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-12.0.2.jdk/Contents/Home
 # export JUNIT_HOME=/usr/local/junit
 # export MTURK_CMD_HOME=/Users/mcq/aws-mturk-clt-1.3.0
@@ -33,6 +33,9 @@ export HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend
 export HISTFILESIZE=10000
 export HISTSIZE=10000
+# This account is not in the admin group, so casks cannot be written to
+# /Applications; install them under ~/Applications instead
+export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
 # export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=1
 
 export LIBRARY_PATH=$LIBRARY_PATH:/opt/homebrew/opt/openssl/lib/
