@@ -110,6 +110,17 @@ Sys.setenv(STATS_DATA_DIR="~/courses/stats/data")
 Sys.setenv(VIS_DATA_DIR="/Users/mm223266/courses/visAnalytics/data")
 
 options(install.packages.check.source = "no")
-update.packages <- function(...) {
-  utils::update.packages(lib.loc = Sys.getenv("R_LIBS_USER"), ...)
+# Check every library on the search path for outdated packages, but install the
+# new versions into the personal library. The system library under R.framework
+# is root:admin and not writable by this non-admin account; a copy in the
+# personal library sits first on .libPaths() and shadows the system one.
+# Only the copy that actually loads (first on .libPaths()) is compared against
+# CRAN, so a stale system copy hidden behind a current personal one is ignored
+# instead of producing a "will not be updated" warning on every run.
+update.packages <- function(..., instlib = .libPaths()[1], ask = FALSE) {
+  ip  <- utils::installed.packages()
+  ip  <- ip[!duplicated(ip[, "Package"]), , drop = FALSE]
+  old <- utils::old.packages(instPkgs = ip, ...)
+  if (is.null(old)) { message("All packages are up to date."); return(invisible(NULL)) }
+  utils::update.packages(oldPkgs = old, instlib = instlib, ask = ask, ...)
 }
