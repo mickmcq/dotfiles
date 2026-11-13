@@ -1,0 +1,15 @@
+# Homebrew's R bottle hard-codes the gcc target-triple directory of the machine
+# it was built on (aarch64-apple-darwin27) into FLIBS, but the gcc bottle
+# installed here uses aarch64-apple-darwin25. libemutls_w.a and libheapt_w.a
+# live only in that directory, so every package with Fortran code failed to
+# link ("ld: library 'emutls_w' not found"). Ask gfortran where it really is.
+GCC_TRIPLE_DIR = $(dir $(shell /opt/homebrew/opt/gcc/bin/gfortran -print-file-name=libemutls_w.a))
+FLIBS = -L$(GCC_TRIPLE_DIR) -L/opt/homebrew/opt/gcc/lib/gcc/current -lemutls_w -lheapt_w -lgfortran -lquadmath
+
+# R's BLAS (openblas) is linked against /opt/homebrew/opt/libomp/lib/libomp.dylib,
+# but Homebrew LLVM clang (first on PATH) resolves -fopenmp to its own copy in
+# /opt/homebrew/opt/llvm/lib. Loading a package built that way (data.table,
+# RcppArmadillo) put two OpenMP runtimes in one process and aborted with
+# "OMP: Error #15". The driver appends its own -L last, so an explicit search
+# path here makes -lomp resolve to the same libomp R already uses.
+LDFLAGS += -L/opt/homebrew/opt/libomp/lib

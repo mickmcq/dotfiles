@@ -111,8 +111,8 @@ Sys.setenv(VIS_DATA_DIR="/Users/mm223266/courses/visAnalytics/data")
 
 options(install.packages.check.source = "no")
 # Check every library on the search path for outdated packages, but install the
-# new versions into the personal library. The system library under R.framework
-# is root:admin and not writable by this non-admin account; a copy in the
+# new versions into the personal library. The system library (Homebrew Cellar)
+# gets wiped on every brew upgrade, so nothing should live there; a copy in the
 # personal library sits first on .libPaths() and shadows the system one.
 # Only the copy that actually loads (first on .libPaths()) is compared against
 # CRAN, so a stale system copy hidden behind a current personal one is ignored
